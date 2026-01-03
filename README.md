@@ -24,15 +24,27 @@ A native macOS menu bar application for monitoring and managing open TCP ports a
 - Xcode 15 or later
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (for generating the Xcode project)
 
-## Getting Started
+## Installation
 
-### 1. Install XcodeGen
+### Download the Release
+
+1. Download `OpenPorts.zip` from the [latest release](https://github.com/mwhesse/OpenPorts/releases/latest)
+2. Unzip and move `OpenPorts.app` to your Applications folder
+3. **Important**: Remove the quarantine attribute (required for unsigned apps):
+   ```bash
+   xattr -cr /Applications/OpenPorts.app
+   ```
+4. Double-click to launch, or right-click and select "Open"
+
+### Build from Source
+
+#### 1. Install XcodeGen
 
 ```bash
 brew install xcodegen
 ```
 
-### 2. Clone and build
+#### 2. Clone and build
 
 ```bash
 git clone https://github.com/mwhesse/OpenPorts.git
@@ -41,7 +53,7 @@ xcodegen generate
 open OpenPorts.xcodeproj
 ```
 
-### 3. Build and run
+#### 3. Build and run
 
 Press **⌘R** in Xcode to build and run. Look for the network icon in your menu bar.
 
