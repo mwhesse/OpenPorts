@@ -1,90 +1,49 @@
 # OpenPorts
 
-A native macOS menu bar application that lists open ports, allows browsing, copying, and terminating processes, with Docker container support.
+A native macOS menu bar application for monitoring and managing open TCP ports and Docker containers.
+
+![macOS](https://img.shields.io/badge/macOS-13.0+-blue)
+![Swift](https://img.shields.io/badge/Swift-5.9-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ## Features
 
-- **Live in your menu bar** - Quick access to all open ports
-- **Browse** - Open any port in your default browser
-- **Copy** - Copy localhost URLs to clipboard
-- **Terminate/Kill** - Stop processes with SIGTERM or SIGKILL
-- **Docker support** - Manage containers with published ports
-- **Configurable** - Auto-refresh intervals, confirmation dialogs, and more
+- **Menu bar app** - Lives in your menu bar for quick access
+- **Port scanning** - Displays all listening TCP ports with process info
+- **Expandable details** - Click any port to see the full command line path
+- **App icons** - Shows application icons for GUI processes
+- **Filter & search** - Filter ports by name, port number, or path
+- **Hide ports** - Hide frequently-running ports you don't need to see
+- **Process control** - Terminate (SIGTERM) or kill (SIGKILL) processes
+- **Docker support** - View and manage containers with published ports
+- **Auto-refresh** - Configurable refresh intervals (5s, 10s, 30s, or manual)
 
 ## Requirements
 
 - macOS 13.0 (Ventura) or later
 - Xcode 15 or later
+- [XcodeGen](https://github.com/yonaskolb/XcodeGen) (for generating the Xcode project)
 
-## Setup Instructions
+## Getting Started
 
-### 1. Check if Xcode is installed
+### 1. Install XcodeGen
 
 ```bash
-xcode-select -p
+brew install xcodegen
 ```
 
-If not installed, install from the Mac App Store or run:
+### 2. Clone and build
+
 ```bash
-xcode-select --install
+git clone https://github.com/mwhesse/OpenPorts.git
+cd OpenPorts
+xcodegen generate
+open OpenPorts.xcodeproj
 ```
 
-### 2. Create the Xcode Project
+### 3. Build and run
 
-1. Open Xcode
-2. File → New → Project (⇧⌘N)
-3. Select **macOS** → **App**
-4. Click **Next**
-5. Configure the project:
-   - **Product Name**: `OpenPorts`
-   - **Team**: Your Apple Developer Team (or "None")
-   - **Organization Identifier**: `com.yourname` (e.g., `com.martinhesse`)
-   - **Interface**: `SwiftUI`
-   - **Language**: `Swift`
-   - **Storage**: `None`
-   - Uncheck "Include Tests"
-6. Click **Next**
-7. Choose the `openports` folder as the save location
-8. Click **Create**
-
-### 3. Configure as Menu Bar App
-
-1. In the Project Navigator, click on the **OpenPorts** project (blue icon at top)
-2. Select the **OpenPorts** target
-3. Go to the **Info** tab
-4. Click the **+** button to add a new key
-5. Add: `Application is agent (UIElement)` = `YES`
-   - This hides the app from the Dock and makes it a true menu bar app
-
-### 4. Disable App Sandbox (Required for shell commands)
-
-1. Still in the **OpenPorts** target
-2. Go to **Signing & Capabilities** tab
-3. Find **App Sandbox** and click the **X** to remove it
-   - Or keep it and manually add entitlements for shell access
-
-### 5. Replace the Default Files
-
-Xcode creates default files that we need to replace:
-
-1. **Delete** these files from Xcode (move to trash):
-   - `ContentView.swift` (in the OpenPorts folder)
-   - `OpenPortsApp.swift` (in the OpenPorts folder)
-
-2. **Add our source files** to the project:
-   - Right-click on the **OpenPorts** folder in Xcode
-   - Select **Add Files to "OpenPorts"...**
-   - Navigate to the `OpenPorts` folder containing our code
-   - Select all folders: `Models`, `Services`, `Views`, `Utilities`, and the `OpenPortsApp.swift` file
-   - Make sure **"Copy items if needed"** is UNCHECKED (files are already in place)
-   - Make sure **"Create groups"** is selected
-   - Click **Add**
-
-### 6. Build and Run
-
-1. Press **⌘R** to build and run
-2. Look for the network icon in your menu bar
-3. Click it to see the port list
+Press **⌘R** in Xcode to build and run. Look for the network icon in your menu bar.
 
 ## Project Structure
 
@@ -94,69 +53,76 @@ OpenPorts/
 ├── Models/
 │   ├── PortInfo.swift          # Port/process data model
 │   ├── DockerContainer.swift   # Docker container model
-│   └── AppSettings.swift       # User preferences
+│   └── AppSettings.swift       # User preferences (persisted)
 ├── Services/
 │   ├── PortScanner.swift       # Scans for open ports using lsof
 │   ├── ProcessManager.swift    # Terminate/kill processes
 │   └── DockerService.swift     # Docker container management
 ├── Views/
 │   ├── ContentView.swift       # Main popover content
-│   ├── PortRowView.swift       # Individual port entry
-│   ├── DockerRowView.swift     # Docker container entry
-│   └── SettingsView.swift      # Preferences window
+│   ├── PortRowView.swift       # Individual port row (expandable)
+│   ├── DockerRowView.swift     # Docker container row
+│   └── SettingsView.swift      # Settings popover
 └── Utilities/
-    └── ShellExecutor.swift     # Run shell commands safely
+    └── ShellExecutor.swift     # Shell command execution
 ```
 
 ## Usage
 
-### Port Actions
+### Port List
 
-| Action | Description |
-|--------|-------------|
-| Safari icon | Open `http://localhost:PORT` in browser |
-| Copy icon | Copy URL to clipboard |
-| Stop icon (orange) | Send SIGTERM - graceful termination |
-| X icon (red) | Send SIGKILL - force kill |
+- **Click a port row** to expand and see the full process command line
+- **Hover** over a port to reveal the hide/unhide button
+- Use the **filter field** to search by process name, port number, or path
+
+### Port Actions (in expanded view)
+
+| Button | Action |
+|--------|--------|
+| **Open** | Open `http://localhost:PORT` in browser |
+| **Copy** | Copy URL to clipboard |
+| **Terminate** | Send SIGTERM (graceful shutdown) |
+| **Kill** | Send SIGKILL (force kill) |
 
 ### Docker Actions
 
-| Action | Description |
-|--------|-------------|
-| Restart icon | Restart the container |
-| Stop icon | `docker stop` - graceful stop |
-| X icon | `docker kill` - force kill |
+| Button | Action |
+|--------|--------|
+| **Restart** | Restart the container |
+| **Stop** | Graceful stop (`docker stop`) |
+| **Kill** | Force kill (`docker kill`) |
 
 ### Settings
 
-Access settings by clicking the gear icon:
+Click the gear icon to access settings:
 
-- **Auto-refresh interval**: Manual, 5s, 10s, or 30s
-- **Confirm before kill**: Show confirmation dialogs
-- **Show Docker containers**: Toggle Docker section
-- **Show system processes**: Include root/system processes
-- **Launch at login**: Start with macOS
+| Setting | Description |
+|---------|-------------|
+| Auto-refresh | Manual, 5s, 10s, or 30s intervals |
+| Confirm before kill | Show confirmation dialog for process termination |
+| Confirm before Docker stop | Show confirmation for container operations |
+| Show Docker containers | Toggle Docker section visibility |
+| Show system processes | Include root/system-owned processes |
+| Launch at login | Start OpenPorts when you log in |
 
 ## Troubleshooting
 
-### "Permission denied" errors
+### Ports not appearing
 
-The app needs to run shell commands (`lsof`, `kill`). Make sure:
-1. App Sandbox is disabled, OR
-2. You've added the necessary entitlements
+- Click the refresh button
+- Check if the process is owned by root (enable "Show system processes" in settings)
+- Verify the port is listening: `lsof -iTCP -sTCP:LISTEN -P -n | grep PORT`
 
-### Docker not showing
+### "Permission denied" when killing
 
-1. Make sure Docker Desktop is running
-2. Check "Show Docker containers" is enabled in Settings
+Some processes (especially system processes) require elevated privileges. The app cannot kill processes owned by root or other users.
+
+### Docker section not showing
+
+1. Ensure Docker Desktop is running
+2. Enable "Show Docker containers" in settings
 3. Verify Docker CLI works: `docker ps`
-
-### Ports not updating
-
-1. Click the refresh button
-2. Check the auto-refresh interval in Settings
-3. Some ports may be owned by system processes (toggle "Show system processes")
 
 ## License
 
-MIT License - Feel free to modify and distribute.
+MIT License - See [LICENSE](LICENSE) for details.
