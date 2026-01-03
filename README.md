@@ -18,25 +18,27 @@ A native macOS menu bar application for monitoring and managing open TCP ports a
 - **Docker support** - View and manage containers with published ports
 - **Auto-refresh** - Configurable refresh intervals (5s, 10s, 30s, or manual)
 
-## Requirements
-
-- macOS 13.0 (Ventura) or later
-- Xcode 15 or later
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) (for generating the Xcode project)
-
 ## Installation
 
-### Download the Release
+### Homebrew (Recommended)
+
+```bash
+brew tap mwhesse/tap
+brew install --cask openports
+```
+
+### Manual Download
 
 1. Download `OpenPorts.zip` from the [latest release](https://github.com/mwhesse/OpenPorts/releases/latest)
 2. Unzip and move `OpenPorts.app` to your Applications folder
-3. **Important**: Remove the quarantine attribute (required for unsigned apps):
+3. Remove the quarantine attribute (required for unsigned apps):
    ```bash
    xattr -cr /Applications/OpenPorts.app
    ```
-4. Double-click to launch, or right-click and select "Open"
 
 ### Build from Source
+
+Requirements: macOS 13.0+, Xcode 15+, [XcodeGen](https://github.com/yonaskolb/XcodeGen)
 
 #### 1. Install XcodeGen
 
