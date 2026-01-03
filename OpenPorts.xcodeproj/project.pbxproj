@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20D168313D835967187ACD07 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42CD82E032D309C310CD06 /* AppSettings.swift */; };
+		43083D4534B78BB8379B3C17 /* DockerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148D1ED40FBD947AA34FD34 /* DockerContainer.swift */; };
+		44416C6028E2B2119BBF44EA /* ShellExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D87DB534EFB211E303F04 /* ShellExecutor.swift */; };
+		455FF1670F7E46E32DEC72C9 /* OpenPortsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F661C58854A6D4A0E67FE1 /* OpenPortsApp.swift */; };
+		4C93D759FAC14958E1EF3EF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CB667FEFEE6EA615EB7EF9 /* ContentView.swift */; };
+		4D44189B2A02C8B4617FF1AB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94658619153D48133C58F316 /* SettingsView.swift */; };
+		B82DC7FA64B08F1699BA3EF5 /* DockerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498109D2DC4FAC3E84A1D72E /* DockerRowView.swift */; };
+		C337B611C7F785A166F9F658 /* DockerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6B2C8421310B7DF9D4578 /* DockerService.swift */; };
+		CA869B0C6028ECEF7A3EFEC9 /* PortScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169857DF809A0FE78B0CFB6 /* PortScanner.swift */; };
+		DFA64993000E7762879A0087 /* PortInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933A143BCF5D77E6EA24A50 /* PortInfo.swift */; };
+		FCFD42F2AF948D24FBF03D2C /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631E324DA6A0AC5CB963AE7 /* ProcessManager.swift */; };
+		FD2D10D05B9B69398977FADD /* PortRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231F86EDEB71C2D8BD8A342 /* PortRowView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F42CD82E032D309C310CD06 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		1148D1ED40FBD947AA34FD34 /* DockerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerContainer.swift; sourceTree = "<group>"; };
+		2169857DF809A0FE78B0CFB6 /* PortScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortScanner.swift; sourceTree = "<group>"; };
+		42CB667FEFEE6EA615EB7EF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4933A143BCF5D77E6EA24A50 /* PortInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortInfo.swift; sourceTree = "<group>"; };
+		498109D2DC4FAC3E84A1D72E /* DockerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerRowView.swift; sourceTree = "<group>"; };
+		7F1D87DB534EFB211E303F04 /* ShellExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellExecutor.swift; sourceTree = "<group>"; };
+		94658619153D48133C58F316 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9BC6B2C8421310B7DF9D4578 /* DockerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockerService.swift; sourceTree = "<group>"; };
+		B5F661C58854A6D4A0E67FE1 /* OpenPortsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPortsApp.swift; sourceTree = "<group>"; };
+		C449C66FBCC8BB442C8F1153 /* OpenPorts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPorts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C631E324DA6A0AC5CB963AE7 /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+		E231F86EDEB71C2D8BD8A342 /* PortRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortRowView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1776F41BBB5CD652B838504C = {
+			isa = PBXGroup;
+			children = (
+				A40A78A2399423D7233495EB /* OpenPorts */,
+				9C3A4E8EA006350F01FE7260 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C61898D20A6C1B02BCCCAEB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9BC6B2C8421310B7DF9D4578 /* DockerService.swift */,
+				2169857DF809A0FE78B0CFB6 /* PortScanner.swift */,
+				C631E324DA6A0AC5CB963AE7 /* ProcessManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4AE493FF89D7993D07366308 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F42CD82E032D309C310CD06 /* AppSettings.swift */,
+				1148D1ED40FBD947AA34FD34 /* DockerContainer.swift */,
+				4933A143BCF5D77E6EA24A50 /* PortInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96552AC672ADE7C4EE4AFC51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42CB667FEFEE6EA615EB7EF9 /* ContentView.swift */,
+				498109D2DC4FAC3E84A1D72E /* DockerRowView.swift */,
+				E231F86EDEB71C2D8BD8A342 /* PortRowView.swift */,
+				94658619153D48133C58F316 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9C3A4E8EA006350F01FE7260 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C449C66FBCC8BB442C8F1153 /* OpenPorts.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40A78A2399423D7233495EB /* OpenPorts */ = {
+			isa = PBXGroup;
+			children = (
+				B5F661C58854A6D4A0E67FE1 /* OpenPortsApp.swift */,
+				4AE493FF89D7993D07366308 /* Models */,
+				1C61898D20A6C1B02BCCCAEB /* Services */,
+				E7566A272D496A82069F296E /* Utilities */,
+				96552AC672ADE7C4EE4AFC51 /* Views */,
+			);
+			path = OpenPorts;
+			sourceTree = "<group>";
+		};
+		E7566A272D496A82069F296E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7F1D87DB534EFB211E303F04 /* ShellExecutor.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7EFE0B3A94361BE5FD25574A /* OpenPorts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB2762D0A534BD79E56790E6 /* Build configuration list for PBXNativeTarget "OpenPorts" */;
+			buildPhases = (
+				7E8CDD7A3E36CAE50105AE4C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenPorts;
+			packageProductDependencies = (
+			);
+			productName = OpenPorts;
+			productReference = C449C66FBCC8BB442C8F1153 /* OpenPorts.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B8F3B626F9B335311CBA268 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					7EFE0B3A94361BE5FD25574A = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC08BE0CEE7FEEB6662C52B7 /* Build configuration list for PBXProject "OpenPorts" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1776F41BBB5CD652B838504C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7EFE0B3A94361BE5FD25574A /* OpenPorts */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E8CDD7A3E36CAE50105AE4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D168313D835967187ACD07 /* AppSettings.swift in Sources */,
+				4C93D759FAC14958E1EF3EF4 /* ContentView.swift in Sources */,
+				43083D4534B78BB8379B3C17 /* DockerContainer.swift in Sources */,
+				B82DC7FA64B08F1699BA3EF5 /* DockerRowView.swift in Sources */,
+				C337B611C7F785A166F9F658 /* DockerService.swift in Sources */,
+				455FF1670F7E46E32DEC72C9 /* OpenPortsApp.swift in Sources */,
+				DFA64993000E7762879A0087 /* PortInfo.swift in Sources */,
+				FD2D10D05B9B69398977FADD /* PortRowView.swift in Sources */,
+				CA869B0C6028ECEF7A3EFEC9 /* PortScanner.swift in Sources */,
+				FCFD42F2AF948D24FBF03D2C /* ProcessManager.swift in Sources */,
+				4D44189B2A02C8B4617FF1AB /* SettingsView.swift in Sources */,
+				44416C6028E2B2119BBF44EA /* ShellExecutor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D4ECE059879C1B4E3171030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openports.app;
+				PRODUCT_NAME = OpenPorts;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3F8D612DC277F1179F21FFED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.openports.app;
+				PRODUCT_NAME = OpenPorts;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D904B0737E3455D32146AA5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F32B04CD2FD2B255461CF8E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC08BE0CEE7FEEB6662C52B7 /* Build configuration list for PBXProject "OpenPorts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32B04CD2FD2B255461CF8E0 /* Debug */,
+				D904B0737E3455D32146AA5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FB2762D0A534BD79E56790E6 /* Build configuration list for PBXNativeTarget "OpenPorts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8D612DC277F1179F21FFED /* Debug */,
+				1D4ECE059879C1B4E3171030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B8F3B626F9B335311CBA268 /* Project object */;
+}
