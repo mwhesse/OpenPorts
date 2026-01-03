@@ -1,10 +1,12 @@
-# OpenPorts
+<p align="center">
+  <img src="assets/banner.svg" alt="OpenPorts" width="800"/>
+</p>
 
-A native macOS menu bar application for monitoring and managing open TCP ports and Docker containers.
-
-![macOS](https://img.shields.io/badge/macOS-13.0+-blue)
-![Swift](https://img.shields.io/badge/Swift-5.9-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-13.0+-blue" alt="macOS"/>
+  <img src="https://img.shields.io/badge/Swift-5.9-orange" alt="Swift"/>
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License"/>
+</p>
 
 ## Features
 
