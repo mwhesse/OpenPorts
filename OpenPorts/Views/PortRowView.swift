@@ -149,19 +149,18 @@ struct PortRowView: View {
             }
 
             // Action buttons
-            HStack(spacing: 8) {
-                ActionButton(title: "Open", icon: "safari", color: .accentColor, action: onBrowse)
-                ActionButton(title: "Copy", icon: "doc.on.doc", color: .secondary, action: onCopy)
+            HStack(spacing: 6) {
+                ActionButton(label: "Open in Browser", icon: "safari", color: .accentColor, action: onBrowse)
+                ActionButton(label: "Copy URL", icon: "doc.on.doc", color: .secondary, action: onCopy)
 
                 Spacer()
 
-                ActionButton(title: "Terminate", icon: "stop.circle", color: .orange, action: onTerminate)
-                ActionButton(title: "Kill", icon: "xmark.circle.fill", color: .red, action: onKill)
+                ActionButton(label: "Terminate (SIGTERM)", icon: "stop.circle", color: .orange, action: onTerminate)
+                ActionButton(label: "Kill (SIGKILL)", icon: "xmark.circle.fill", color: .red, action: onKill)
             }
         }
         .padding(.horizontal, 12)
         .padding(.bottom, 10)
-        .padding(.leading, 90) // Align with process name (icon + port number)
     }
 
     /// Fetches the full command line for the process
@@ -209,22 +208,27 @@ private struct ActionButton: View {
 
     var body: some View {
         Button(action: action) {
-            Label(title, systemImage: icon)
-                .font(.caption)
-                .fontWeight(.medium)
-                .foregroundColor(isHovered ? .white : color)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(isHovered ? color : color.opacity(0.1))
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .strokeBorder(color.opacity(0.3), lineWidth: 1)
-                )
+            HStack(spacing: 4) {
+                Image(systemName: icon)
+                Text(title)
+            }
+            .font(.caption)
+            .fontWeight(.medium)
+            .foregroundColor(isHovered ? .white : color)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+            .background(
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(isHovered ? color : color.opacity(0.1))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .strokeBorder(color.opacity(0.3), lineWidth: 1)
+            )
         }
         .buttonStyle(.plain)
+        .help(title)
+        .fixedSize()
         .onHover { hovering in
             withAnimation(.easeInOut(duration: 0.15)) {
                 isHovered = hovering
