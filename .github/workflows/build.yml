@@ -22,6 +22,15 @@ jobs:
       - name: Generate Xcode project
         run: xcodegen generate
 
+      - name: Extract version from tag
+        id: version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          else
+            echo "version=1.0.0" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build
         run: |
           xcodebuild -project OpenPorts.xcodeproj \
@@ -31,6 +40,7 @@ jobs:
             CODE_SIGN_IDENTITY="-" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
+            MARKETING_VERSION="${{ steps.version.outputs.version }}" \
             build
 
       - name: Create app bundle
