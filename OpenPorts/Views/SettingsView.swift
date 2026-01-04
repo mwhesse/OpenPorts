@@ -103,7 +103,7 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
 
-                Link(destination: URL(string: "https://github.com")!) {
+                Link(destination: URL(string: "https://github.com/mwhesse/OpenPorts")!) {
                     HStack {
                         Text("View on GitHub")
                         Spacer()
