@@ -1,4 +1,5 @@
 import Foundation
+import ServiceManagement
 import SwiftUI
 
 /// Manages user preferences for the OpenPorts app.
@@ -184,17 +185,26 @@ final class AppSettings: ObservableObject {
     /// Updates the system login item based on the launchAtLogin setting.
     /// Uses SMAppService on macOS 13+ for modern launch-at-login handling.
     private func updateLaunchAtLogin() {
-        // SMAppService is the modern way to handle launch at login on macOS 13+
-        // This requires adding the app to Login Items in System Settings
-        // For now, we'll just store the preference - users can manually add via System Settings
+        do {
+            if launchAtLogin {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch {
+            print("Failed to update launch at login: \(error)")
+        }
+    }
 
-        // Note: To fully implement launch at login, you would use:
-        // import ServiceManagement
-        // if launchAtLogin {
-        //     try? SMAppService.mainApp.register()
-        // } else {
-        //     try? SMAppService.mainApp.unregister()
-        // }
+    /// Syncs the launchAtLogin setting with the actual system state.
+    /// Call this on app launch to ensure the toggle reflects reality.
+    func syncLaunchAtLoginState() {
+        let isRegistered = (SMAppService.mainApp.status == .enabled)
+        if launchAtLogin != isRegistered {
+            // Update without triggering updateLaunchAtLogin again
+            UserDefaults.standard.set(isRegistered, forKey: "launchAtLogin")
+            objectWillChange.send()
+        }
     }
 }
 

@@ -12,6 +12,9 @@ struct OpenPortsApp: App {
         // Available on macOS 13.0+
         MenuBarExtra {
             ContentView(settings: settings)
+                .onAppear {
+                    settings.syncLaunchAtLoginState()
+                }
         } label: {
             // Menu bar icon - using SF Symbol for network/port
             Image(systemName: "network")
