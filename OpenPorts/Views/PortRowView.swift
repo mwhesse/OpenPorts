@@ -149,34 +149,15 @@ struct PortRowView: View {
             }
 
             // Action buttons
-            HStack(spacing: 12) {
-                Button(action: onBrowse) {
-                    Label("Open", systemImage: "safari")
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(.accentColor)
-
-                Button(action: onCopy) {
-                    Label("Copy", systemImage: "doc.on.doc")
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(.secondary)
+            HStack(spacing: 8) {
+                ActionButton(title: "Open", icon: "safari", color: .accentColor, action: onBrowse)
+                ActionButton(title: "Copy", icon: "doc.on.doc", color: .secondary, action: onCopy)
 
                 Spacer()
 
-                Button(action: onTerminate) {
-                    Label("Terminate", systemImage: "stop.circle")
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(.orange)
-
-                Button(action: onKill) {
-                    Label("Kill", systemImage: "xmark.circle.fill")
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(.red)
+                ActionButton(title: "Terminate", icon: "stop.circle", color: .orange, action: onTerminate)
+                ActionButton(title: "Kill", icon: "xmark.circle.fill", color: .red, action: onKill)
             }
-            .font(.caption)
         }
         .padding(.horizontal, 12)
         .padding(.bottom, 10)
@@ -210,6 +191,43 @@ struct PortRowView: View {
                     .font(.system(size: 14))
                     .frame(width: 20, height: 20)
                     .foregroundColor(.secondary)
+            }
+        }
+    }
+}
+
+// MARK: - Action Button
+
+/// A styled button for port actions with hover effect
+private struct ActionButton: View {
+    let title: String
+    let icon: String
+    let color: Color
+    let action: () -> Void
+
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: action) {
+            Label(title, systemImage: icon)
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundColor(isHovered ? .white : color)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(isHovered ? color : color.opacity(0.1))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .strokeBorder(color.opacity(0.3), lineWidth: 1)
+                )
+        }
+        .buttonStyle(.plain)
+        .onHover { hovering in
+            withAnimation(.easeInOut(duration: 0.15)) {
+                isHovered = hovering
             }
         }
     }
