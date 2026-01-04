@@ -71,8 +71,36 @@ struct ContentView: View {
         }
     }
 
+    /// Computed background view based on settings
+    @ViewBuilder
+    private var backgroundView: some View {
+        switch settings.backgroundStyle {
+        case .transparent:
+            Color.clear
+        case .solid:
+            solidBackgroundColor
+                .opacity(settings.backgroundOpacity)
+        }
+    }
+
+    /// Solid background color based on settings
+    private var solidBackgroundColor: Color {
+        switch settings.backgroundColor {
+        case .system:
+            return Color(nsColor: .windowBackgroundColor)
+        case .light:
+            return Color.white
+        case .dark:
+            return Color(nsColor: .darkGray)
+        }
+    }
+
     var body: some View {
         ZStack {
+            // Background layer
+            backgroundView
+                .ignoresSafeArea()
+
             VStack(spacing: 0) {
                 // Header
                 header

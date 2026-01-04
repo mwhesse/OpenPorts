@@ -56,6 +56,65 @@ final class AppSettings: ObservableObject {
         didSet { objectWillChange.send() }
     }
 
+    // MARK: - Appearance Settings
+
+    /// Background style for the popover
+    enum BackgroundStyle: String, CaseIterable, Identifiable {
+        case transparent = "transparent"
+        case solid = "solid"
+
+        var id: String { rawValue }
+
+        var displayName: String {
+            switch self {
+            case .transparent: return "Transparent"
+            case .solid: return "Solid"
+            }
+        }
+    }
+
+    /// Background color preset for solid backgrounds
+    enum BackgroundColor: String, CaseIterable, Identifiable {
+        case system = "system"
+        case light = "light"
+        case dark = "dark"
+
+        var id: String { rawValue }
+
+        var displayName: String {
+            switch self {
+            case .system: return "System"
+            case .light: return "Light"
+            case .dark: return "Dark"
+            }
+        }
+    }
+
+    /// The background style (transparent or solid)
+    @AppStorage("backgroundStyle") var backgroundStyleRaw: String = BackgroundStyle.transparent.rawValue {
+        didSet { objectWillChange.send() }
+    }
+
+    var backgroundStyle: BackgroundStyle {
+        get { BackgroundStyle(rawValue: backgroundStyleRaw) ?? .transparent }
+        set { backgroundStyleRaw = newValue.rawValue }
+    }
+
+    /// The background color preset (when solid)
+    @AppStorage("backgroundColor") var backgroundColorRaw: String = BackgroundColor.system.rawValue {
+        didSet { objectWillChange.send() }
+    }
+
+    var backgroundColor: BackgroundColor {
+        get { BackgroundColor(rawValue: backgroundColorRaw) ?? .system }
+        set { backgroundColorRaw = newValue.rawValue }
+    }
+
+    /// Background opacity (0.5 to 1.0)
+    @AppStorage("backgroundOpacity") var backgroundOpacity: Double = 1.0 {
+        didSet { objectWillChange.send() }
+    }
+
     // MARK: - Display Settings
 
     /// Whether to show Docker containers in the port list

@@ -50,6 +50,40 @@ struct SettingsView: View {
                     .foregroundColor(.secondary)
             }
 
+            // Appearance Settings Section
+            Section {
+                Picker("Background style", selection: $settings.backgroundStyle) {
+                    ForEach(AppSettings.BackgroundStyle.allCases) { style in
+                        Text(style.displayName).tag(style)
+                    }
+                }
+                .pickerStyle(.menu)
+
+                if settings.backgroundStyle == .solid {
+                    Picker("Background color", selection: $settings.backgroundColor) {
+                        ForEach(AppSettings.BackgroundColor.allCases) { color in
+                            Text(color.displayName).tag(color)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text("Opacity")
+                        Spacer()
+                        Text("\(Int(settings.backgroundOpacity * 100))%")
+                            .foregroundColor(.secondary)
+                    }
+                    Slider(value: $settings.backgroundOpacity, in: 0.5...1.0, step: 0.05)
+                }
+            } header: {
+                Label("Appearance", systemImage: "paintbrush")
+            } footer: {
+                Text("Customize the popover background appearance")
+                    .foregroundColor(.secondary)
+            }
+
             // Startup Settings Section
             Section {
                 Toggle("Launch at login", isOn: $settings.launchAtLogin)
