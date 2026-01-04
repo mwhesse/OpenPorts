@@ -150,13 +150,13 @@ struct PortRowView: View {
 
             // Action buttons
             HStack(spacing: 6) {
-                ActionButton(label: "Open in Browser", icon: "safari", color: .accentColor, action: onBrowse)
-                ActionButton(label: "Copy URL", icon: "doc.on.doc", color: .secondary, action: onCopy)
+                ActionButton(title: "Open", icon: "safari", color: .accentColor, action: onBrowse)
+                ActionButton(title: "Copy", icon: "doc.on.doc", color: .secondary, action: onCopy)
 
                 Spacer()
 
-                ActionButton(label: "Terminate (SIGTERM)", icon: "stop.circle", color: .orange, action: onTerminate)
-                ActionButton(label: "Kill (SIGKILL)", icon: "xmark.circle.fill", color: .red, action: onKill)
+                ActionButton(title: "Terminate", icon: "stop.circle", color: .orange, action: onTerminate)
+                ActionButton(title: "Kill", icon: "xmark.circle.fill", color: .red, action: onKill)
             }
         }
         .padding(.horizontal, 12)
