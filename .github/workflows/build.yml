@@ -66,3 +66,36 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-cask:
+    needs: release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: OpenPorts
+
+      - name: Calculate SHA256
+        id: sha
+        run: echo "sha256=$(shasum -a 256 OpenPorts.zip | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+
+      - name: Extract version
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Update Homebrew cask
+        env:
+          HOMEBREW_TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+        run: |
+          git clone https://x-access-token:${HOMEBREW_TAP_TOKEN}@github.com/mwhesse/homebrew-tap.git
+          cd homebrew-tap
+          sed -i 's/version ".*"/version "${{ steps.version.outputs.version }}"/' Casks/openports.rb
+          sed -i 's/sha256 ".*"/sha256 "${{ steps.sha.outputs.sha256 }}"/' Casks/openports.rb
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Casks/openports.rb
+          git commit -m "Update openports to v${{ steps.version.outputs.version }}"
+          git push
